@@ -1,0 +1,278 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Bertha's Deluxe Chocolates</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="css/mycssfile.css">
+		<link rel="stylesheet" type="text/css" href="ui/jquery-ui.min.css">
+	
+		<script src="/jquery/jquery.js"></script>
+		<script src="javascript/ajax_get_lib.js"></script>
+		<script type="text/javascript" src="ui/jquery-ui.min.js"></script>  
+		<script src="javascript/shopping_cart.js"></script>
+		<script src="javascript/ajax_populate_page.js"></script>
+		<script src="javascript/my.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Josefin+Slab|Lato" rel="stylesheet"> 
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body class="cart-body">
+	<nav>
+		<a href="index.html">Home</a>
+		<a href="products.html">Products</a>
+		<a href="about.html">About Us</a>
+		<a href="contact.html">Contact</a>
+		<a href="cart.html">Your cart: <span id="count">0</span></a>
+	</nav>
+
+    <div class="holder">
+    	<div id="cart"></div>
+    </div>
+
+    <div id="dialog-modal" class="widget-dialog-container" title="Complete Your Order">
+    	<fieldset>
+		<legend>Billing Info</legend>
+		<form method="post" action="/perl/jadrn012/read_cookie.cgi">    
+		    <ul class="order-form">
+			<li>
+				<label for="fname" pattern="[A-Za-z-' ]{1,32}" title="Enter in letters only">First Name</label>
+				<input type="text" name="fname_billing" id="fname2222" maxlength="32"  placeholder="Marshall" required>
+				<label for="lname">Last Name</label> 
+				<input type="text" name="lname_billing" id="lname" maxlength="32" pattern="[A-Za-z-' ]{1,32}" title="Enter in letters only" placeholder="Faulk" required>
+			</li>
+
+			<li>
+				<label for="address">Address</label>
+				<input type="text" name="address_billing" id="address" required>
+
+				<input type="text" name="address2_billing" pattern="[A-Za-z-'. 0-9]{1,32}" placeholder="Apt/Condo Number" title="Letters & Numbers Only">  
+			</li>
+			<li>
+				<label for="city">City</label>
+				<input type="text" name="city_billing" id="city" pattern="[A-Za-z- ]{1,32}" title="Enter in letters only ex: San Diego" required >
+
+				<label for="states">State</label>
+				<select name="state_billing" id="states" required>
+					<option value="Alabama">Alabama</option>
+					<option value="Alaska">Alaska</option>
+					<option value="Arizona">Arizona</option>
+					<option value="Arkansas">Arkansas</option>
+					<option value="California">California</option>
+					<option value="Colorado">Colorado</option>
+					<option value="Connecticut">Connecticut</option>
+					<option value="Delaware">Delaware</option>
+					<option value="District Of Columbia">District Of Columbia</option>
+					<option value="Florida">Florida</option>
+					<option value="Georgia">Georgia</option>
+					<option value="Hawaii">Hawaii</option>
+					<option value="Idaho">Idaho</option>
+					<option value="Illinois">Illinois</option>
+					<option value="Indiana">Indiana</option>
+					<option value="Iowa">Iowa</option>
+					<option value="Kansas">Kansas</option>
+					<option value="Kentucky">Kentucky</option>
+					<option value="Louisiana">Louisiana</option>
+					<option value="Maine">Maine</option>
+					<option value="Maryland">Maryland</option>
+					<option value="Massachusetts">Massachusetts</option>
+					<option value="Michigan">Michigan</option>
+					<option value="Minnesota">Minnesota</option>
+					<option value="Mississippi">Mississippi</option>
+					<option value="Missouri">Missouri</option>
+					<option value="Montana">Montana</option>
+					<option value="Nebraska">Nebraska</option>
+					<option value="Nevada">Nevada</option>
+					<option value="New Hampshire">New Hampshire</option>
+					<option value="New Jersey">New Jersey</option>
+					<option value="New Mexico">New Mexico</option>
+					<option value="New York">New York</option>
+					<option value="North Carolina">North Carolina</option>
+					<option value="North Dakota">North Dakota</option>
+					<option value="Ohio">Ohio</option>
+					<option value="Oklahoma">Oklahoma</option>
+					<option value="Oregon">Oregon</option>
+					<option value="Pennsylvania">Pennsylvania</option>
+					<option value="hode Island">Rhode Island</option>
+					<option value="South Carolina">South Carolina</option>
+					<option value="South Dakota">South Dakota</option>
+					<option value="Tennessee">Tennessee</option>
+					<option value="Texas">Texas</option>
+					<option value="Utah">Utah</option>
+					<option value="Vermont">Vermont</option>
+					<option value="Virginia">Virginia</option>
+					<option value="Washington">Washington</option>
+					<option value="West Virginia">West Virginia</option>
+					<option value="Wisconsin">Wisconsin</option>
+					<option value="Wyoming">Wyoming</option>
+				</select>
+			
+			<!-- pattern for zip code from http://html5pattern.com/Postal_Codes -->
+			<label for="zipcode">Zipcode</label>
+			<input type="text" name="zipcode_billing" pattern="(\d{5}([\-]\d{4})?)" title="Enter in Numbers Only ex: 92129" placeholder="55555" required> <br>
+			</li>
+
+			<li>
+				<label for="phone">Phone Number</label>
+				(<input type="text" id="phone" name="phonestart_billing" size="3" minlength="3" maxlength="3" pattern="[0-9]{3}"  placeholder="XXX" title="Enter in area code ex: 619" required>)
+				<input type="text" name="phonemid_billing" size="3" minlength="3" maxlength="3" pattern="[0-9]{3}" placeholder="XXX" title="Enter in the first 3 digits ex: 524" required>
+				<input type="text" name="phoneend_billing" size="4" minlength="4" maxlength="4" pattern="[0-9]{4}" placeholder="XXXX" title="Enter in the last 4 digits ex: 1480" required>
+			</li>
+
+			<li>
+				<label for="email">Email</label>
+				<input type="email" name="email_billing" id="email" placeholder="name@email.com" required>
+			</li>
+	
+		</ul>
+		</fieldset>
+		
+		<fieldset>
+		<legend>Shipping Info</legend>
+
+			<ul class="order-form">
+			<li>
+				<label><input type="checkbox" id="same_as_billing" /> Same as billing</label>
+			</li>
+			<li>
+				<label for="fname" pattern="[A-Za-z-' ]{1,32}" title="Enter in letters only">First Name</label>
+				<input type="text" name="fname_shipping" id="fname2222" maxlength="22"  placeholder="Marshall" required>
+				<label for="lname">Last Name</label> 
+				<input type="text" name="lname_shipping" id="lname" maxlength="22" pattern="[A-Za-z-' ]{1,32}" title="Enter in letters only" placeholder="Faulk" required>
+			</li>
+
+
+			<li>
+				<label for="address">Address</label>
+				<input type="text" name="address_shipping" id="address" required>
+
+				<input type="text" name="address2_shipping" pattern="[A-Za-z-'. 0-9]{1,32}" placeholder="Apt/Condo Number" title="Letters & Numbers Only">  
+			</li>
+			<li>
+				<label for="city">City</label>
+				<input type="text" name="city_shipping" id="city" pattern="[A-Za-z- ]{1,32}" title="Enter in letters only ex: San Diego" required >
+
+				<label for="states">State</label>
+				<select name="state_shipping" id="states">
+					<option value="Alabama">Alabama</option>
+					<option value="Alaska">Alaska</option>
+					<option value="Arizona">Arizona</option>
+					<option value="Arkansas">Arkansas</option>
+					<option value="California">California</option>
+					<option value="Colorado">Colorado</option>
+					<option value="Connecticut">Connecticut</option>
+					<option value="Delaware">Delaware</option>
+					<option value="District Of Columbia">District Of Columbia</option>
+					<option value="Florida">Florida</option>
+					<option value="Georgia">Georgia</option>
+					<option value="Hawaii">Hawaii</option>
+					<option value="Idaho">Idaho</option>
+					<option value="Illinois">Illinois</option>
+					<option value="Indiana">Indiana</option>
+					<option value="Iowa">Iowa</option>
+					<option value="Kansas">Kansas</option>
+					<option value="Kentucky">Kentucky</option>
+					<option value="Louisiana">Louisiana</option>
+					<option value="Maine">Maine</option>
+					<option value="Maryland">Maryland</option>
+					<option value="Massachusetts">Massachusetts</option>
+					<option value="Michigan">Michigan</option>
+					<option value="Minnesota">Minnesota</option>
+					<option value="Mississippi">Mississippi</option>
+					<option value="Missouri">Missouri</option>
+					<option value="Montana">Montana</option>
+					<option value="Nebraska">Nebraska</option>
+					<option value="Nevada">Nevada</option>
+					<option value="New Hampshire">New Hampshire</option>
+					<option value="New Jersey">New Jersey</option>
+					<option value="New Mexico">New Mexico</option>
+					<option value="New York">New York</option>
+					<option value="North Carolina">North Carolina</option>
+					<option value="North Dakota">North Dakota</option>
+					<option value="Ohio">Ohio</option>
+					<option value="Oklahoma">Oklahoma</option>
+					<option value="Oregon">Oregon</option>
+					<option value="Pennsylvania">Pennsylvania</option>
+					<option value="hode Island">Rhode Island</option>
+					<option value="South Carolina">South Carolina</option>
+					<option value="South Dakota">South Dakota</option>
+					<option value="Tennessee">Tennessee</option>
+					<option value="Texas">Texas</option>
+					<option value="Utah">Utah</option>
+					<option value="Vermont">Vermont</option>
+					<option value="Virginia">Virginia</option>
+					<option value="Washington">Washington</option>
+					<option value="West Virginia">West Virginia</option>
+					<option value="Wisconsin">Wisconsin</option>
+					<option value="Wyoming">Wyoming</option>
+				</select>
+			
+			<!-- pattern for zip code from http://html5pattern.com/Postal_Codes -->
+			<label for="zipcode">Zipcode</label>
+			<input type="text" name="zipcode_shipping" pattern="(\d{5}([\-]\d{4})?)" title="Enter in Numbers Only ex: 92129" placeholder="55555" required> <br>
+			</li>
+
+			<li>
+				<label for="phone">Phone Number</label>
+				(<input type="text" id="phone_shipping" name="phonestart_shipping" size="3" minlength="3" maxlength="3" pattern="[0-9]{3}"  placeholder="XXX" title="Enter in area code ex: 619" required>)
+				<input type="text" name="phonemid_shipping" size="3" minlength="3" maxlength="3" pattern="[0-9]{3}" placeholder="XXX" title="Enter in the first 3 digits ex: 524" required>
+				<input type="text" name="phoneend_shipping" size="4" minlength="4" maxlength="4" pattern="[0-9]{4}" placeholder="XXXX" title="Enter in the last 4 digits ex: 1480" required>
+			</li>
+
+			<li>
+				<label for="email">Email</label>
+				<input type="email" name="email_shipping" id="email" placeholder="name@email.com" required>
+			</li>
+	
+		</ul>
+
+		</fieldset>
+
+		<fieldset>
+		<legend>Payment Info</legend>
+		<ul class="order-form"> 
+			<li>
+				<label for="creditcard">Credit Card Number</label>
+				<input type="text" name="creditcard" pattern="[0-9]{13,16}" title="Enter in Numbers Only ex: 4444123477771234" placeholder="4444123477771234" required>
+			</li>
+			<li>	
+				<label for="cardtype">Card Type</label>
+				<select name="cardtype" id="cardtype" required>
+					<option value="Visa">Visa</option>
+					<option value="Mastercard">Mastercard</option>
+					<option value="American">American Express</option>
+					<option value="Discover">Discover</option>
+				</select>
+			</li>
+			<li>
+				<label for="expiration">Expiration Date: </label>
+				<input type="text" name="m" id="m" placeholder="MM" size="2" title="Enter in 2 digits" required >
+				<input type="text" name="y" id="y" placeholder="YYYY" size="4" title="Enter in 4 digits" required >  
+			</li>
+			<li>
+				<input type="hidden" name="total" id="total">
+				<input type="hidden" name="shipping" id="shipping">
+				<input type="hidden" name="tax" id="tax">
+				<input type="hidden" name="pretotal" id="pretotal">
+			</li>
+		</ul>
+		</fieldset>
+
+		<div class="button-section">
+			<input type="reset" value="Clear Data" class="button-clear" />
+			<input type="submit" value="Submit" class="button-submit" />
+			<h3 id="what_kind">&nbsp;</h3>
+		</div>
+
+		</form>       
+	</div> 
+
+	<footer>
+		<p>2016 Bertha's Deluxe Chocolates </p>
+		<p class="copyright">Copyright 2016</p>
+	</footer>
+
+	</body>
+</html>

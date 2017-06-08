@@ -1,0 +1,62 @@
+<!doctype html>
+
+<html>
+
+	<head>
+		<title>Bertha's Deluxe Chocolates</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="css/mycssfile.css">
+		
+		<script src="/jquery/jquery.js"></script>
+		<script src="javascript/ajax_get_lib.js"></script>
+		<script src="javascript/ajax_populate_page.js"></script>
+		<script type="text/javascript" src="ui/jquery-ui.min.js"></script>  
+		<script src="javascript/shopping_cart.js"></script>
+		<script src="javascript/my.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Josefin+Slab|Lato" rel="stylesheet"> 
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+	<nav>
+		<a href="index.html">Home</a>
+		<a href="products.html">Products</a>
+		<a href="about.html">About Us</a>
+		<a href="contact.html">Contact</a>
+		<a href="cart.html">Your cart: <span id="count">0</span></a>
+	</nav>
+
+    <div class="holder">
+    	<div class="sidebar-products">
+		<ul class="nav-chocolate">
+			<li id="milk">Milk Chocolates</li>
+			<li id="dark">Dark Chocolates</li>
+			<li id="nuts">Nuts & Chews</li>
+			<li id="brittle">Brittles & Toffies</li>
+			<li id="holiday">Holiday Assortments</li>
+			<li id="gifts">Gifts</li>
+		</ul>
+    	</div>
+        
+        <div class="main-products">
+        	<div class="product-header">
+        		<div class="category-banner-text">
+ 				<h2 style="color:white">Chocolate Type</h2>
+ 				<p style="color:white">Everybody's got a favorite.  What's yours?</p>
+			    </div>
+				<img src="images/product-header.jpg" alt="variety of chocolates"/>
+        	</div>
+        	<div id="content"></div>
+        </div>
+    </div>
+
+
+	<footer>
+		<p>2016 Bertha's Deluxe Chocolates </p>
+		<p class="copyright">Copyright 2016</p>
+	</footer>
+
+	</body>
+</html>
